@@ -1,8 +1,5 @@
 import './style/main.css';
 
-// const form = document.getElementById('Form');
-// const [gettext, listtodo, Clean] = form.elements;
-
 const dataarr = [
   {
     id: 0,
@@ -40,7 +37,6 @@ const projectht = () => {
     Listtodo.append(main);
   });
 };
-// };
 
 window.addEventListener('load', () => {
   projectht();
