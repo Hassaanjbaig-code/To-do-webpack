@@ -82,6 +82,11 @@ legend {
   font-size: 20px;
 }
 
+.text {
+  text-decoration: line-through;
+  color: red;
+}
+
 #listtodo li input[type=checkbox] {
   margin-right: 2px;
   background-color: transparent;
