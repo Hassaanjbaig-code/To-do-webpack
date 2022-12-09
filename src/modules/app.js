@@ -40,6 +40,7 @@ export default class Todoc {
         const { id } = e.target.parentElement;
         maintext.classList.remove('border');
         // tergetting on the index;
+        maintext.setAttribute('readOnly', 'readOnly');
         this.collection[(Number(id)) - 1].title = title;
       }
     });
