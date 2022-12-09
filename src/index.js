@@ -1,43 +1,23 @@
 import './style/main.css';
+import Todocon from './modules/app.js';
 
-const dataarr = [
-  {
-    id: 0,
-    title: 'wash the dishes',
-    completed: true,
-  },
-  {
-    id: '1',
-    title: 'Complete the tod List',
-    completed: false,
-  },
-  {
-    id: '1',
-    title: 'Complete the tod List',
-    completed: false,
-  },
-];
+const input = document.getElementById('gettext');
 
-const projectht = () => {
-  dataarr.forEach((project) => {
-    //   for (const project of dataarr) {
-    const Listtodo = document.getElementById('listtodo');
-    const main = document.createElement('li');
-    main.classList.add('projectli');
-    main.id = project.id;
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.completed = project.completed;
-    const maintext = document.createElement('h3');
-    maintext.innerText = project.title;
-    main.append(
-      checkbox,
-      maintext,
-    );
-    Listtodo.append(main);
-  });
-};
+const todo = new Todocon();
 
-window.addEventListener('load', () => {
-  projectht();
+input.addEventListener('change', (e) => {
+  todo.add(input.value, true);
+  e.preventDefault();
+  input.value = '';
 });
+
+window.addEventListener('beforeunload', () => {
+  localStorage.setItem('listBook', JSON.stringify(todo.collection));
+});
+
+if (window.localStorage.getItem('listBook') !== 'undefined') {
+  const list = JSON.parse(window.localStorage.getItem('listBook'));
+  list.forEach((collection) => {
+    todo.add(collection.title);
+  });
+}
