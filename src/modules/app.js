@@ -1,6 +1,9 @@
 import Todocon from './class.js';
 import icon from '../assets/icons8-remove-64.png';
 
+const Listtodo = document.getElementById('listtodo');
+const clean = document.getElementById('Clean');
+
 export default class Todoc {
   constructor() {
     this.collection = [];
@@ -13,7 +16,6 @@ export default class Todoc {
   }
 
   addto(struction) {
-    const Listtodo = document.getElementById('listtodo');
     const main = document.createElement('li');
     main.classList.add('projectli');
     main.id = struction.id;
@@ -54,6 +56,11 @@ export default class Todoc {
     icondelete.addEventListener('click', () => {
       Listtodo.removeChild(main);
       this.remove(struction.id);
+    });
+    // For remove all
+    clean.addEventListener('click', () => {
+      Listtodo.innerHTML = '';
+      this.collection = [];
     });
   }
 
