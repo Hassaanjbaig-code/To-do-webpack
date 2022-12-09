@@ -1,6 +1,9 @@
 import Todocon from './class.js';
 import icon from '../assets/icons8-remove-64.png';
 
+const Listtodo = document.getElementById('listtodo');
+const clean = document.getElementById('Clean');
+
 export default class Todoc {
   constructor() {
     this.collection = [];
@@ -13,7 +16,6 @@ export default class Todoc {
   }
 
   addto(struction) {
-    const Listtodo = document.getElementById('listtodo');
     const main = document.createElement('li');
     main.classList.add('projectli');
     main.id = struction.id;
@@ -44,6 +46,17 @@ export default class Todoc {
         this.collection[(Number(id)) - 1].title = title;
       }
     });
+    checkbox.addEventListener('change', (e) => {
+      if (checkbox.checked === true) {
+        maintext.classList.add('text');
+        const { id } = e.target.parentElement;
+        this.collection[id - 1].complete = checkbox.checked;
+      } else {
+        maintext.classList.remove('text');
+        const { id } = e.target.parentElement;
+        this.collection[id - 1].complete = checkbox.checked;
+      }
+    });
     main.append(
       checkbox,
       maintext,
@@ -54,6 +67,21 @@ export default class Todoc {
     icondelete.addEventListener('click', () => {
       Listtodo.removeChild(main);
       this.remove(struction.id);
+    });
+    //   For checkin the complete is true or not
+    for (let i = 0; i < this.collection.length; i += 1) {
+      if (this.collection[i].complete === true) {
+        maintext.classList.add('text');
+        checkbox.checked = true;
+      } else {
+        maintext.classList.remove('text');
+        checkbox.checked = false;
+      }
+    }
+    // For remove all
+    clean.addEventListener('click', () => {
+      Listtodo.innerHTML = '';
+      this.collection = [];
     });
   }
 

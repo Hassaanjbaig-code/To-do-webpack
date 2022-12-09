@@ -18,6 +18,6 @@ window.addEventListener('beforeunload', () => {
 if (window.localStorage.getItem('listBook') !== 'undefined') {
   const list = JSON.parse(window.localStorage.getItem('listBook'));
   list.forEach((collection) => {
-    todo.add(collection.title);
+    todo.add(collection.title, collection.complete);
   });
 }
