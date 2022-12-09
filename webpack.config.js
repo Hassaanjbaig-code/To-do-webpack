@@ -1,40 +1,55 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
-const Htmlwebpackplugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'development',
   entry: {
-    bundle: path.resolve(__dirname, './src/index.js'),
+    index: './src/index.js',
+  },
+  devServer: {
+    static: './dist',
   },
   output: {
-    path: path.resolve(__dirname, './dist'),
-    filename: '[name].js',
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'dist'),
     clean: true,
+    assetModuleFilename: 'images/[name][ext]',
   },
-  devtool: 'source-map',
-  devServer: {
-    static: {
-      directory: path.resolve(__dirname, 'dist'),
-    },
-    open: true,
-    compress: true,
-    port: 3000,
-    hot: true,
-    historyApiFallback: true,
-  },
+
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        test: /\.(s[ac]|c)ss$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+      {
+        test: /\.js$/i,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
       },
     ],
   },
+
   plugins: [
-    new Htmlwebpackplugin({
-      title: 'To do',
-      filename: 'index.html',
-      template: 'src/index.html',
+    new HtmlWebpackPlugin({
+      title: 'Webpack Setup',
+      template: path.resolve(__dirname, 'src', 'index.html'),
     }),
+    new MiniCssExtractPlugin(),
   ],
+  devtool: 'inline-source-map',
+
+  optimization: {
+    runtimeChunk: 'single',
+  },
 };

@@ -34,7 +34,6 @@
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] - **User can add Book by adding book title and book author**
 - [ ] **I will add more functionality using javascript such as drag and drop.**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

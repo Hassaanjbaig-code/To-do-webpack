@@ -13,8 +13,6 @@ body {
 
 #Todo {
   width: 26rem;
-
-  /* background-color: #fff; */
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -39,17 +37,34 @@ legend {
   font-size: 4vh;
 }
 
+.delete {
+  width: 2rem;
+  cursor: pointer;
+}
+
 #gettext {
   width: 94%;
   box-sizing: border-box;
   background: transparent;
   height: 3rem;
+  color: rgba(0, 255, 255, 0.673);
   font-size: 20px;
   border-radius: 6px;
 }
 
 ::placeholder {
   color: rgba(255, 255, 255, 0.745);
+}
+
+.text-area {
+  background: transparent;
+  border: none;
+  font-size: 19px;
+  color: white;
+}
+
+.border {
+  background-color: rgba(5, 45, 45, 1);
 }
 
 #listtodo {
@@ -60,6 +75,8 @@ legend {
 
 #listtodo li {
   display: flex;
+  width: 100%;
+  justify-content: space-around;
   padding: 13px;
   box-sizing: border-box;
   font-size: 20px;
