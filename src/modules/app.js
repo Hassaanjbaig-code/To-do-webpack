@@ -9,13 +9,13 @@ export default class Todoc {
     this.collection = [];
   }
 
-  add(title, complete, id = this.collection.length + 1) {
+  add = (title, complete, id = this.collection.length + 1) => {
     const struction = new Todocon(title, complete, id);
     this.collection.push(struction);
     this.addto(struction);
   }
 
-  addto(struction) {
+  addto = (struction) => {
     const main = document.createElement('li');
     main.classList.add('projectli');
     main.id = struction.id;
@@ -85,12 +85,12 @@ export default class Todoc {
     });
   }
 
-  remove(id) {
+  remove = (id) => {
     this.collection = this.collection.filter((task) => task.id !== this.collection[id - 1].id);
     this.updateid();
   }
 
-  updateid() {
+  updateid = () => {
     for (let i = 0; i < this.collection.length; i += 1) {
       this.collection[i].id = i + 1;
     }
