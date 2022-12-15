@@ -3,6 +3,8 @@ import icon from '../assets/icons8-remove-64.png';
 
 const Listtodo = document.getElementById('listtodo');
 const clean = document.getElementById('Clean');
+const cleanall = document.getElementById('Clean-All');
+const error = document.getElementById('error');
 
 export default class Todoc {
   constructor() {
@@ -78,10 +80,22 @@ export default class Todoc {
         checkbox.checked = false;
       }
     }
-    // For remove all
+    // For remove Check mark
     clean.addEventListener('click', () => {
+      this.collection = this.collection.filter((clean) => clean.complete !== true);
+      this.updateid();
       Listtodo.innerHTML = '';
-      this.collection = [];
+      this.collection.forEach((x) => this.addto(x));
+    });
+    cleanall.addEventListener('click', () => {
+      console.log(this.collection.length);
+      if (this.collection.length >= 1) {
+        Listtodo.innerHTML = '';
+        this.collection = [];
+        error.classList.remove('error');
+      } else {
+        error.classList.add('error');
+      }
     });
   }
 

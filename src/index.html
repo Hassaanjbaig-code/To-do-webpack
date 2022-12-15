@@ -1,19 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todd List</title>
-</head>
-<body>
+  </head>
+  <body>
     <section id="Todo">
-        <form id="Form" action="#">
+      <form id="Form" action="#">
         <legend>Today's To Do</legend>
-        <input type="text" id="gettext" placeholder="Add to your list..." height="2rem">
+        <input
+          type="text"
+          id="gettext"
+          placeholder="Add to your list..."
+          height="2rem"
+        />
         <ul id="listtodo"></ul>
-        <input type="button" id="Clean" value="Clean">
-    </form>
+        <div class="Button-clean">
+          <input
+            type="button"
+            id="Clean"
+            class="Clean"
+            value="Clean the Selected one"
+          />
+          <input
+            type="button"
+            id="Clean-All"
+            class="Clean-All"
+            value="Clean All"
+          />
+        </div>
+        <span id="error" class="error">Add some thing</span>
+      </form>
     </section>
-</body>
+  </body>
 </html>
