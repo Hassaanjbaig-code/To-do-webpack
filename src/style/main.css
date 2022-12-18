@@ -92,15 +92,35 @@ legend {
   background-color: transparent;
 }
 
-#Clean {
-  display: flex;
+.Button-clean {
   width: 100%;
-  align-self: flex-end;
-  justify-self: flex-end;
-  justify-content: center;
+  display: flex;
+  gap: 12px;
+}
+
+.Clean {
   background-color: transparent;
   border: 1px solid grey;
   height: 3rem;
   color: #ffffff94;
   border-radius: 12px;
+  width: 50%;
+}
+
+.Clean-All {
+  background-color: transparent;
+  border: 1px solid grey;
+  height: 3rem;
+  color: #ffffff94;
+  border-radius: 12px;
+  width: 50%;
+}
+
+#error {
+  text-align: center;
+  color: red;
+}
+
+.error {
+  display: none;
 }

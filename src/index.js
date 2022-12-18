@@ -6,7 +6,7 @@ const input = document.getElementById('gettext');
 const todo = new Todocon();
 
 input.addEventListener('change', (e) => {
-  todo.add(input.value, true);
+  todo.add(input.value, false);
   e.preventDefault();
   input.value = '';
 });

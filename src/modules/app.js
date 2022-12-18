@@ -3,19 +3,21 @@ import icon from '../assets/icons8-remove-64.png';
 
 const Listtodo = document.getElementById('listtodo');
 const clean = document.getElementById('Clean');
+const cleanall = document.getElementById('Clean-All');
+const error = document.getElementById('error');
 
 export default class Todoc {
   constructor() {
     this.collection = [];
   }
 
-  add(title, complete, id = this.collection.length + 1) {
+  add = (title, complete, id = this.collection.length + 1) => {
     const struction = new Todocon(title, complete, id);
     this.collection.push(struction);
     this.addto(struction);
   }
 
-  addto(struction) {
+  addto = (struction) => {
     const main = document.createElement('li');
     main.classList.add('projectli');
     main.id = struction.id;
@@ -78,19 +80,31 @@ export default class Todoc {
         checkbox.checked = false;
       }
     }
-    // For remove all
+    // For remove Check mark
     clean.addEventListener('click', () => {
+      this.collection = this.collection.filter((clean) => clean.complete !== true);
+      this.updateid();
       Listtodo.innerHTML = '';
-      this.collection = [];
+      this.collection.forEach((x) => this.addto(x));
+    });
+    cleanall.addEventListener('click', () => {
+      console.log(this.collection.length);
+      if (this.collection.length >= 1) {
+        Listtodo.innerHTML = '';
+        this.collection = [];
+        error.classList.remove('error');
+      } else {
+        error.classList.add('error');
+      }
     });
   }
 
-  remove(id) {
+  remove = (id) => {
     this.collection = this.collection.filter((task) => task.id !== this.collection[id - 1].id);
     this.updateid();
   }
 
-  updateid() {
+  updateid = () => {
     for (let i = 0; i < this.collection.length; i += 1) {
       this.collection[i].id = i + 1;
     }
